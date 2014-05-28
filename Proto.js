@@ -13,7 +13,7 @@ module.exports = Object.create(EventEmitter.prototype, {
       }
 
       //  get a new object
-      var object = Object.create(typeof this === "function" ? this.prototype: this, definition || {});
+      var object = Object.create(this.prototype, definition || {});
 
       //   mr freeze...
       Object.freeze(object);
@@ -37,11 +37,27 @@ module.exports = Object.create(EventEmitter.prototype, {
 
       var object = Object.create(this);
 
-      EventEmitter.init.call(object);
-
       if (typeof object.__init__ === 'function') {
         object.__init__.apply(object, arguments);
       }
+
+      Object.defineProperties(object, {
+
+        _events: {
+          value: {}
+        },
+        domain: {
+          value: null,
+          writable: true
+        },
+        _maxListeners: {
+          value: null,
+          writable: true
+        }
+
+      });
+
+      EventEmitter.init.call(object);
 
       return object;
 
