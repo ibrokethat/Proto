@@ -35,13 +35,7 @@ module.exports = Object.create(EventEmitter.prototype, {
 
     value: function() {
 
-      var object = Object.create(this);
-
-      if (typeof object.__init__ === 'function') {
-        object.__init__.apply(object, arguments);
-      }
-
-      Object.defineProperties(object, {
+      var object = Object.create(this, {
 
         _events: {
           value: {}
@@ -56,6 +50,10 @@ module.exports = Object.create(EventEmitter.prototype, {
         }
 
       });
+
+      if (typeof object.__init__ === 'function') {
+        object.__init__.apply(object, arguments);
+      }
 
       EventEmitter.init.call(object);
 
