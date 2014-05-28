@@ -1,0 +1,33 @@
+{
+  "name": "super-proto",
+  "description": "prototype object with inheritence methods",
+  "version": "0.0.1",
+  "author": "si@ibrokethat.com",
+  "contributors": [
+    { "name": "Simon Jefford", "email": "si@ibrokethat.com" }
+  ],
+  "dependencies": {
+    "super-iter": "x",
+    "super-collection": "x",
+    "super-registry": "x",
+    "super-is": "x"
+  },
+  "devDependencies": {
+    "mocha": "1.2.x",
+    "sinon": "1.3.x"
+  },
+  "keywords": ["ibrokethat", "Proto"],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ibrokethat/Proto"
+  },
+  "ibrokethat": {
+    "buildClient": true
+  },
+  "main": "Proto.js",
+  "scripts": {
+    "prepublish" : "npm prune",
+    "test": "mocha -u bdd"
+  },
+  "engines": { "node": "*" }
+}
