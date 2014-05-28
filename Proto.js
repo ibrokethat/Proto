@@ -13,7 +13,7 @@ module.exports = Object.create(EventEmitter.prototype, {
       }
 
       //  get a new object
-      var object = Object.create(this.prototype, definition || {});
+      var object = Object.create(this, definition || {});
 
       //   mr freeze...
       Object.freeze(object);
