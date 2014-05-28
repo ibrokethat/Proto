@@ -7,7 +7,10 @@ module.exports = Object.create(EventEmitter.prototype, {
 
     value: function(definition) {
 
-      this.__preCreate__(definition);
+      if (typeof this.__preCreate__ === 'function') {
+
+        this.__preCreate__(definition);
+      }
 
       //  get a new object
       var object = Object.create(typeof this === "function" ? this.prototype: this, definition || {});
